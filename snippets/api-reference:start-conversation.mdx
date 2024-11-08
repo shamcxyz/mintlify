@@ -1,0 +1,72 @@
+---
+title: 'Start Conversation'
+description: 'Initialize a reimbursement request conversation'
+---
+
+# Start Conversation
+
+Create a new conversation for a reimbursement request.
+
+## API Reference
+
+```bash
+POST /start_conversation
+```
+
+### Body Parameters
+
+<ParamField body="netid" type="string">
+  Duke NetID (optional if email is provided)
+</ParamField>
+
+<ParamField body="email" type="string">
+  Email address (optional if netid is provided)
+</ParamField>
+
+<ParamField body="name" type="string">
+  User's name (required if email is provided)
+</ParamField>
+
+### Response
+
+<ResponseField name="conversation_id" type="string">
+  Unique identifier for the conversation
+</ResponseField>
+
+<ResponseField name="message" type="string">
+  Initial response message
+</ResponseField>
+
+```json
+{
+  "conversation_id": "123e4567-e89b-12d3-a456-426614174000",
+  "message": "Hello! Please provide your reimbursement details."
+}
+```
+
+### Example Request
+
+<CodeGroup>
+```python Python
+import requests
+
+response = requests.post(
+    'https://api.trymidas.ai/start_conversation',
+    data={
+        'netid': 'abc123'
+    }
+)
+```
+
+```javascript JavaScript
+fetch('https://api.trymidas.ai/start_conversation', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/x-www-form-urlencoded',
+  },
+  body: new URLSearchParams({
+    'netid': 'abc123'
+  })
+})
+```
+</CodeGroup>
